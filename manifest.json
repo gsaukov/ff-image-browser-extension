@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.google.com/search?*"],
+      "matches": ["*://*.localhost/*"],
       "js": ["imagebrowser.js"]
     }
   ],
