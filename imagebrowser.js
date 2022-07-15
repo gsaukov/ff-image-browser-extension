@@ -11,19 +11,23 @@ function checkKey(e) {
 
     e = e || window.event;
 
-    let path = window.location
+    let loc = new URL(window.location)
+    let pref1 = loc.pathname.split('/')[1]
+    let pref2 = loc.pathname.split('/')[2]
+    let pref3 = loc.pathname.split('/')[3]
+    parseInt("00", 10)
 
     if (e.keyCode == '38') {
-        console.log('up arrow ' + path)
+        console.log('up arrow ' + loc)
     }
     else if (e.keyCode == '40') {
-        console.log('down arrow ' + path)
+        console.log('down arrow ' + pref1)
     }
     else if (e.keyCode == '37') {
-        console.log('left arrow ' + path)
+        console.log('left arrow ' + pref2)
     }
     else if (e.keyCode == '39') {
-        console.log('right arrow ' + path)
+        console.log('right arrow ' + pref3)
     }
 
 }
