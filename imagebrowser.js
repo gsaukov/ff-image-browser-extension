@@ -25,10 +25,17 @@ function checkKey(e) {
         window.location.assign("http://localhost/static/00202/00202_001.jpeg")
     }
     else if (e.keyCode == '37') {
-        console.log('left arrow ' + pref2)
+        let inc = incrementPrefix(pref2)
+        console.log('left arrow ' + pref2 + ' ' + inc)
     }
     else if (e.keyCode == '39') {
         console.log('right arrow ' + pref3)
     }
 
+}
+
+function incrementPrefix(prefix) {
+    let size = prefix.length;
+    let val = parseInt(prefix, 10)
+    return String(val + 1).padStart(size, '0')
 }
