@@ -11,17 +11,18 @@ function checkKey(e) {
 
     e = e || window.event;
 
-    let loc = new URL(window.location)
-    let pref1 = loc.pathname.split('/')[1]
-    let pref2 = loc.pathname.split('/')[2]
-    let pref3 = loc.pathname.split('/')[3]
+    let originalLoc = new URL(window.location)
+    let pref1 = originalLoc.pathname.split('/')[1]
+    let pref2 = originalLoc.pathname.split('/')[2]
+    let pref3 = originalLoc.pathname.split('/')[3]
     parseInt("00", 10)
 
     if (e.keyCode == '38') {
-        console.log('up arrow ' + loc)
+        console.log('up arrow ' + originalLoc)
     }
     else if (e.keyCode == '40') {
         console.log('down arrow ' + pref1)
+        window.location.assign("http://localhost/static/00202/00202_001.jpeg")
     }
     else if (e.keyCode == '37') {
         console.log('left arrow ' + pref2)
