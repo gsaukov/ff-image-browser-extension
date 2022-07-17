@@ -26,10 +26,17 @@ function checkKey(e) {
         window.location.assign(originalLoc.toString());
     }
     else if (e.keyCode == '40') {
-        console.log('down arrow ' + folder);
+        folder = decrement(folder);
+        file = decrementFileFolder(file);
+        originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
+        console.log('down arrow ' + originalLoc.pathname);
+        window.location.assign(originalLoc.toString());
     }
     else if (e.keyCode == '37') {
+        file = decrementFileNumber(file);
+        originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
         console.log('left arrow ' + originalLoc.pathname);
+        window.location.assign(originalLoc.toString());
     }
     else if (e.keyCode == '39') {
         file = incrementFileNumber(file);
@@ -61,5 +68,29 @@ function incrementFileNumber(file) {
     let fileExt = file.split(".")[1];
 
     fileNum = increment(fileNum)
+    return fileFolder + '_' + fileNum + '.' + fileExt;
+}
+
+function decrement(number) {
+    let size = number.length;
+    let val = parseInt(number, 10);
+    return String(val - 1).padStart(size, '0');
+}
+
+function decrementFileFolder(file) {
+    let fileFolder = file.split("_")[0];
+    let fileNum = file.split("_")[1].split(".")[0];
+    let fileExt = file.split(".")[1];
+
+    fileFolder = decrement(fileFolder)
+    return fileFolder + '_' + fileNum + '.' + fileExt;
+}
+
+function decrementFileNumber(file) {
+    let fileFolder = file.split("_")[0];
+    let fileNum = file.split("_")[1].split(".")[0];
+    let fileExt = file.split(".")[1];
+
+    fileNum = decrement(fileNum)
     return fileFolder + '_' + fileNum + '.' + fileExt;
 }
