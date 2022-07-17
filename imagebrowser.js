@@ -44,6 +44,9 @@ function checkKey(e) {
         console.log('right arrow ' + originalLoc.pathname);
         window.location.assign(originalLoc.toString());
     }
+    else if (e.keyCode == '13') {
+        window.open(originalLoc.toString());
+    }
 
 }
 
