@@ -54,21 +54,11 @@ function increment(number) {
 }
 
 function incrementFileFolder(file) {
-    let fileFolder = file.split("_")[0];
-    let fileNum = file.split("_")[1].split(".")[0];
-    let fileExt = file.split(".")[1];
-
-    fileFolder = increment(fileFolder)
-    return fileFolder + '_' + fileNum + '.' + fileExt;
+    return increment(getFileFolder(file)) + '_' + getFileNum(file) + '.' + getFileExt(file);
 }
 
 function incrementFileNumber(file) {
-    let fileFolder = file.split("_")[0];
-    let fileNum = file.split("_")[1].split(".")[0];
-    let fileExt = file.split(".")[1];
-
-    fileNum = increment(fileNum)
-    return fileFolder + '_' + fileNum + '.' + fileExt;
+    return getFileFolder(file) + '_' + increment(getFileNum(file)) + '.' + getFileExt(file);
 }
 
 function decrement(number) {
@@ -78,19 +68,21 @@ function decrement(number) {
 }
 
 function decrementFileFolder(file) {
-    let fileFolder = file.split("_")[0];
-    let fileNum = file.split("_")[1].split(".")[0];
-    let fileExt = file.split(".")[1];
-
-    fileFolder = decrement(fileFolder)
-    return fileFolder + '_' + fileNum + '.' + fileExt;
+    return decrement(getFileFolder(file)) + '_' + getFileNum(file) + '.' + getFileExt(file);
 }
 
 function decrementFileNumber(file) {
-    let fileFolder = file.split("_")[0];
-    let fileNum = file.split("_")[1].split(".")[0];
-    let fileExt = file.split(".")[1];
+    return getFileFolder(file) + '_' + decrement(getFileNum(file)) + '.' + getFileExt(file);
+}
 
-    fileNum = decrement(fileNum)
-    return fileFolder + '_' + fileNum + '.' + fileExt;
+function getFileFolder(file) {
+    return file.split("_")[0];
+}
+
+function getFileNum(file) {
+    return file.split("_")[1].split(".")[0];
+}
+
+function getFileExt(file) {
+    return file.split("_")[1].split(".")[0];
 }
