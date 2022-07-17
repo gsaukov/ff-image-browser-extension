@@ -84,5 +84,5 @@ function getFileNum(file) {
 }
 
 function getFileExt(file) {
-    return file.split("_")[1].split(".")[0];
+    return file.split(".")[1];
 }
