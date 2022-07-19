@@ -18,9 +18,14 @@ function checkKey(e) {
     let folder = pahtSegments[3];
     let file = pahtSegments[4];
 
+    let inc = 1;
+    if (e.shiftKey) {
+        inc = 5;
+    }
+
     if (e.keyCode == '38') { //up
-        folder = increment(folder);
-        file = incrementFileFolder(file);
+        folder = increment(folder, inc);
+        file = incrementFileFolder(file, inc);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
         navigate(originalLoc);
     }
@@ -46,18 +51,18 @@ function checkKey(e) {
 
 }
 
-function increment(number) {
+function increment(number, inc = 1) {
     let size = number.length;
     let val = parseInt(number, 10);
-    return String(val + 1).padStart(size, '0');
+    return String(val + inc).padStart(size, '0');
 }
 
-function incrementFileFolder(file) {
-    return increment(getFileFolder(file)) + '_' + getFileNum(file) + '.' + getFileExt(file);
+function incrementFileFolder(file, inc = 1) {
+    return increment(getFileFolder(file), inc) + '_' + getFileNum(file) + '.' + getFileExt(file);
 }
 
-function incrementFileNumber(file) {
-    return getFileFolder(file) + '_' + increment(getFileNum(file)) + '.' + getFileExt(file);
+function incrementFileNumber(file, inc = 1) {
+    return getFileFolder(file) + '_' + increment(getFileNum(file), inc) + '.' + getFileExt(file);
 }
 
 function decrement(number) {
