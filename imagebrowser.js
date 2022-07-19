@@ -30,18 +30,18 @@ function checkKey(e) {
         navigate(originalLoc);
     }
     else if (e.keyCode == '40') { //down
-        folder = decrement(folder);
-        file = decrementFileFolder(file);
+        folder = increment(folder, -inc);
+        file = incrementFileFolder(file, -inc);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
         navigate(originalLoc);
     }
     else if (e.keyCode == '37') { //left
-        file = decrementFileNumber(file);
+        file = incrementFileNumber(file, -inc);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
         navigate(originalLoc);
     }
     else if (e.keyCode == '39') { //right
-        file = incrementFileNumber(file);
+        file = incrementFileNumber(file, inc);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
         navigate(originalLoc);
     }
@@ -63,20 +63,6 @@ function incrementFileFolder(file, inc = 1) {
 
 function incrementFileNumber(file, inc = 1) {
     return getFileFolder(file) + '_' + increment(getFileNum(file), inc) + '.' + getFileExt(file);
-}
-
-function decrement(number) {
-    let size = number.length;
-    let val = parseInt(number, 10);
-    return String(val - 1).padStart(size, '0');
-}
-
-function decrementFileFolder(file) {
-    return decrement(getFileFolder(file)) + '_' + getFileNum(file) + '.' + getFileExt(file);
-}
-
-function decrementFileNumber(file) {
-    return getFileFolder(file) + '_' + decrement(getFileNum(file)) + '.' + getFileExt(file);
 }
 
 function getFileFolder(file) {
