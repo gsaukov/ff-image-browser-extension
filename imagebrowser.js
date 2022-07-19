@@ -1,9 +1,9 @@
-document.body.style.border = "5px solid red";
-
-var elemDiv = document.createElement('div');
-elemDiv.setAttribute("id", "Pagi_N");
-elemDiv.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000;';
-document.body.appendChild(elemDiv);
+// document.body.style.border = "5px solid red";
+//
+// var elemDiv = document.createElement('div');
+// elemDiv.setAttribute("id", "Pagi_N");
+// elemDiv.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000;';
+// document.body.appendChild(elemDiv);
 
 document.onkeydown = checkKey;
 
@@ -18,31 +18,27 @@ function checkKey(e) {
     let folder = pahtSegments[3];
     let file = pahtSegments[4];
 
-    if (e.keyCode == '38') {
+    if (e.keyCode == '38') { //up
         folder = increment(folder);
         file = incrementFileFolder(file);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
-        console.log('up arrow ' + originalLoc.pathname);
-        window.location.assign(originalLoc.toString());
+        navigate(originalLoc);
     }
-    else if (e.keyCode == '40') {
+    else if (e.keyCode == '40') { //down
         folder = decrement(folder);
         file = decrementFileFolder(file);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
-        console.log('down arrow ' + originalLoc.pathname);
-        window.location.assign(originalLoc.toString());
+        navigate(originalLoc);
     }
-    else if (e.keyCode == '37') {
+    else if (e.keyCode == '37') { //left
         file = decrementFileNumber(file);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
-        console.log('left arrow ' + originalLoc.pathname);
-        window.location.assign(originalLoc.toString());
+        navigate(originalLoc);
     }
-    else if (e.keyCode == '39') {
+    else if (e.keyCode == '39') { //right
         file = incrementFileNumber(file);
         originalLoc.pathname = `${static1}/${static2}/${folder}/${file}`;
-        console.log('right arrow ' + originalLoc.pathname);
-        window.location.assign(originalLoc.toString());
+        navigate(originalLoc);
     }
     else if (e.keyCode == '13') {
         window.open(originalLoc.toString());
@@ -88,4 +84,9 @@ function getFileNum(file) {
 
 function getFileExt(file) {
     return file.split(".")[1];
+}
+
+async function navigate(loc) {
+    console.log('right arrow ' + loc);
+    window.location.assign(loc.toString());
 }
