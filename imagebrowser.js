@@ -22,6 +22,9 @@ function checkKey(e) {
     if (e.shiftKey) {
         inc = 5;
     }
+    if (e.ctrlKey) {
+        inc = 10;
+    }
 
     if (e.keyCode == '38') { //up
         folder = increment(folder, inc);
